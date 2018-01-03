@@ -6,12 +6,14 @@
 
   <h1> Rutgers GPA Calculator </h1>
 
-  <div id="bodyid">
+  <form id="bodyid">
 
-  </div> <!-- bodyid -->
+  </form> <!-- bodyid -->
   <br>
   <button onclick="addButton()">Add class</button>
   <button onclick="doMath()">Calculate</button>
+
+
 
 </body>
 
@@ -22,15 +24,18 @@ var classes = -1;
 function addButton() {
   classes++;
 
+  var html = "<option value='A'>A</option>  <option value='B+'>B+</option>  <option value='B'>B</option>  <option value='C+'>C+</option>  <option value='C'>C</option> <option value='D+'>D+</option>  <option value='D'>D</option>  <option value='B'>F</option>";
+
   var p = document.getElementById('bodyid');
-  var newElement = document.createElement('input');
+  var newElement = document.createElement('select');
   newElement.setAttribute('id', 'classgpa' + classes);
-//  newElement.innerHTML = html;
+  newElement.innerHTML = html;
   p.appendChild(newElement);
-  var html = '';
 
   var newElement2 = document.createElement('input');
   newElement2.setAttribute('id', 'weight' + classes);
+  newElement2.setAttribute('type', 'number');
+    newElement2.setAttribute('placeholder', 'Class Weight');
 //  newElement.innerHTML = html;
   p.appendChild(newElement2);
   var html = '';
@@ -40,7 +45,6 @@ function addButton() {
 }
 
 function doMath() {
-//  alert("in function");
 
   var totalcredits = 0;
   var creditpoints = 0;
