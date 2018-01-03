@@ -1,0 +1,106 @@
+<html>
+<head>
+  <title> Rutgers GPA Calculator </title>
+</head>
+<body onload="addButton()">
+
+  <h1> Rutgers GPA Calculator </h1>
+
+  <div id="bodyid">
+
+  </div> <!-- bodyid -->
+  <br>
+  <button onclick="addButton()">Add class</button>
+  <button onclick="doMath()">Calculate</button>
+
+</body>
+
+<script>
+
+var classes = -1;
+
+function addButton() {
+  classes++;
+
+  var p = document.getElementById('bodyid');
+  var newElement = document.createElement('input');
+  newElement.setAttribute('id', 'classgpa' + classes);
+//  newElement.innerHTML = html;
+  p.appendChild(newElement);
+  var html = '';
+
+  var newElement2 = document.createElement('input');
+  newElement2.setAttribute('id', 'weight' + classes);
+//  newElement.innerHTML = html;
+  p.appendChild(newElement2);
+  var html = '';
+
+  p.appendChild(document.createElement('br'));
+
+}
+
+function doMath() {
+//  alert("in function");
+
+  var totalcredits = 0;
+  var creditpoints = 0;
+
+  for (var x = 0; x <= classes; x++) {
+    var classgpa = document.getElementById('classgpa'+x).value;
+    var classweight = Number.parseFloat(document.getElementById('weight'+x).value)
+  //  alert("classweight" + classweight);
+    totalcredits += classweight;
+
+
+
+    switch (classgpa) {
+    case 'A':
+      //  alert("A");
+        creditpoints += (4.0 * classweight);
+        break;
+    case 'B+':
+        //alert("B+");
+        creditpoints += (3.5 * classweight);
+        break;
+    case 'B':
+        //alert("B");
+        creditpoints += (3.0 * classweight);
+        break;
+    case 'C+':
+        //alert("C+");
+        creditpoints += (2.5 * classweight);
+        break;
+    case 'C':
+        //alert("C");
+        creditpoints += (2.0 * classweight);
+        break;
+    case 'D+':
+        //alert("D+");
+        creditpoints += (1.5 * classweight);
+        break;
+    case 'D':
+        creditpoints += (1.0 * classweight);
+        break;
+    case 'F':
+        creditpoints += 0;
+        break;
+    default:
+        alert("Error with input grade");
+        break;
+    }
+
+  //  alert('CreditPoints: ' + creditpoints + 'Total Credits: ' + totalcredits);
+
+  }
+
+  var finalgpa = creditpoints / totalcredits;
+
+  alert('GPA ' + finalgpa.toFixed(3));
+
+
+
+}
+
+</script>
+
+</html>
