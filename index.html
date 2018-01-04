@@ -2,18 +2,21 @@
 <head>
   <title> Rutgers GPA Calculator </title>
 </head>
-<body onload="addButton()">
+<body onload="addPast()">
 
   <h1> Rutgers GPA Calculator </h1>
-
   <form id="bodyid">
 
   </form> <!-- bodyid -->
+
+
   <br>
   <button onclick="addButton()">Add class</button>
   <button onclick="doMath()">Calculate</button>
+<h4> past semesters </h4>
+    <div id="pastSemesters">
 
-
+    </div>
 
 </body>
 
@@ -48,6 +51,13 @@ function doMath() {
 
   var totalcredits = 0;
   var creditpoints = 0;
+  alert("This far");
+  var pastGPA = Number.parseFloat(document.getElementById('pastGPA').value);
+  var pastCredits = Number.parseFloat(document.getElementById('pastCredits').value);
+  alert("This far 2");
+
+  totalcredits = pastCredits;
+  creditpoints = pastGPA * pastCredits;
 
   for (var x = 0; x <= classes; x++) {
     var classgpa = document.getElementById('classgpa'+x).value;
@@ -101,8 +111,21 @@ function doMath() {
 
   alert('GPA ' + finalgpa.toFixed(3));
 
+}
 
+function addPast() {
+  var p = document.getElementById('pastSemesters');
+  var newElement = document.createElement('input');
+  newElement.setAttribute('id', 'pastGPA');
+  newElement.setAttribute('placeholder', 'Cumulative GPA');
+  var newElement2 = document.createElement('input');
+  newElement2.setAttribute('id', 'pastCredits');
+  //newElement.innerHTML = html;
+  newElement2.setAttribute('placeholder', 'Cumulative Credits (minus AP)');
+  p.appendChild(newElement);
+  p.appendChild(newElement2);
 
+  addButton();
 }
 
 </script>
