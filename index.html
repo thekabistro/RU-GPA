@@ -24,8 +24,8 @@
    max-width: 400px;
    padding: 20px 12px 10px 20px;
    font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-   -webkit-transition: all 2s ease;
-   transition: all 2s ease;
+   -webkit-transition: height 2s ease;
+   transition: height 2s ease;
 
 
   }
@@ -106,6 +106,51 @@ select{
 
 }
 
+.fadein , input, button, title, h1, label{
+  animation: fadein 3s;
+   -moz-animation: fadein 3s;
+   /* Firefox */
+   -webkit-animation: fadein 3s;
+   /* Safari and Chrome */
+   -o-animation: fadein 3s;
+   /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein {
+    /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein {
+    /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein {
+    /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 
 
 }
@@ -143,20 +188,22 @@ function addButton() {
   var p = document.getElementById('bodyid');
   var newElement = document.createElement('select');
   newElement.setAttribute('id', 'classgpa' + classes);
+  newElement.setAttribute('class', 'fadeIn');
   newElement.innerHTML = html;
 
   label1 = document.createElement('label');
+  label1.setAttribute('class', 'fadein');
   label1.innerHTML = 'Class ' + (classes + 1);
-  p.appendChild(label1);
 
-
-  p.appendChild(newElement);
 
   var newElement2 = document.createElement('input');
   newElement2.setAttribute('id', 'weight' + classes);
   newElement2.setAttribute('type', 'number');
-    newElement2.setAttribute('placeholder', 'Class Weight');
+  //newElemen2t.setAttribute('class', 'fadein');
+  newElement2.setAttribute('placeholder', 'Class Weight');
 //  newElement.innerHTML = html;
+  p.appendChild(label1);
+  p.appendChild(newElement);
   p.appendChild(newElement2);
   var html = '';
 
