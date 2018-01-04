@@ -4,38 +4,123 @@
 
   <style>
   body {
-    width: 400px;
+    width: 600px;
     margin: 50px auto;
     font-family: sans-serif;
+    background-color: #f9f9f9;
+
+    -webkit-transition: all 2s ease-in;
+    transition: all 2s ease-in;
   }
   #bodyid {
     margin: auto;
   }
 
-  button {
-  width : 100%;
-  margin: 0;
+  .full {
+  background-color: #fff;
+   margin:10px auto;
+   max-width: 400px;
+   padding: 20px 12px 10px 20px;
+   font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
+
+  }
+
+  .full label{
+    margin:0 0 3px 0;
+    padding:0px;
+    display:block;
+    font-weight: bold;
+}
+
+.full input[type=text],
+.full input[type=date],
+.full input[type=datetime],
+.full input[type=number],
+.full input[type=search],
+.full input[type=time],
+.full input[type=url],
+.full input[type=email],
+textarea,
+select{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border:1px solid #BEBEBE;
+    padding: 7px;
+    margin:0px;
+    margin-bottom: 10px;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+}
+.full input[type=text]:focus,
+.full input[type=date]:focus,
+.full input[type=datetime]:focus,
+.full input[type=number]:focus,
+.full input[type=search]:focus,
+.full input[type=time]:focus,
+.full input[type=url]:focus,
+.full input[type=email]:focus,
+.full textarea:focus,
+.full select:focus{
+    -moz-box-shadow: 0 0 8px #88D5E9;
+    -webkit-box-shadow: 0 0 8px #88D5E9;
+    box-shadow: 0 0 8px #88D5E9;
+    border: 1px solid #88D5E9;
+}
+.full .field-divided{
+    width: 49%;
+}
+
+.full .field-long{
+    width: 100%;
+}
+.full .field-select{
+    width: 100%;
+}
+.full .field-textarea{
+    height: 100px;
+}
+.full button, input[type=submit], .full input[type=button]{
+    background: #4B99AD;
+    padding: 8px 15px 8px 15px;
+    border: none;
+    color: #fff;
+    margin-bottom: 10px;
+}
+.full button:hover, input[type=submit]:hover, .full input[type=button]:hover{
+    background: #2589a3;
+    box-shadow:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+}
+
+
+
 }
 
   </style>
 
 </head>
-<body onload="addPast()">
-
+<body onload="addButton()">
+<div class="full">
   <h1> Rutgers GPA Calculator </h1>
   <form id="bodyid">
 
   </form> <!-- bodyid -->
-
-
-  <br>
   <button onclick="addButton()">Add class</button>
+
+
+
+  <label> Previous Semesters (Do not include AP credits)</label>
+  <input type="number" id="pastGPA" placeholder="Cumulative GPA">
+  <input type="number" id="pastCredits" placeholder="Cumulative Credits">
+
   <button onclick="doMath()">Calculate</button>
-<h3> Previous Semesters </h3>
-    <div id="pastSemesters">
-
-    </div>
-
+</div>
 </body>
 
 <script>
@@ -51,6 +136,12 @@ function addButton() {
   var newElement = document.createElement('select');
   newElement.setAttribute('id', 'classgpa' + classes);
   newElement.innerHTML = html;
+
+  label1 = document.createElement('label');
+  label1.innerHTML = 'Class ' + (classes + 1);
+  p.appendChild(label1);
+
+
   p.appendChild(newElement);
 
   var newElement2 = document.createElement('input');
@@ -61,6 +152,8 @@ function addButton() {
   p.appendChild(newElement2);
   var html = '';
 
+
+
   p.appendChild(document.createElement('br'));
 
 }
@@ -69,10 +162,10 @@ function doMath() {
 
   var totalcredits = 0;
   var creditpoints = 0;
-  alert("This far");
+//  alert("This far");
   var pastGPA = Number.parseFloat(document.getElementById('pastGPA').value);
   var pastCredits = Number.parseFloat(document.getElementById('pastCredits').value);
-  alert("This far 2");
+//  alert("This far 2");
 
   totalcredits = pastCredits;
   creditpoints = pastGPA * pastCredits;
@@ -130,7 +223,7 @@ function doMath() {
   alert('GPA ' + finalgpa.toFixed(3));
 
 }
-
+/*
 function addPast() {
   var p = document.getElementById('pastSemesters');
   var newElement = document.createElement('input');
@@ -145,7 +238,7 @@ function addPast() {
 
   addButton();
 }
-
+*/
 </script>
 
 </html>
